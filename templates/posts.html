@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Mass Thala</title>
+{% endblock %}
+<hr>
+{% block body %}
+<br>
+<div>
+    <h1 style="display: inline;">Post paakum idam idhu </h1>
+    <a class="btn btn-info float-right btn-lg" href="/posts/new">Create new post</a>
+</div>
+<hr>
+<br>
+<br>
+{% for post in posts %}
+    <br>
+    {%if post.author %}
+        <small>Written By: <code style="font-size:15px">{{ post.author}} </code> on <code
+                style="font-size:12px">{{ post.date_posted}}</code> </small>
+        {% else %}
+        <small>Written By: <code style="font-size:15px">Unknown</code> on <code
+                style="font-size:12px">{{ post.date_posted}}</code> </small>
+    {% endif%}
+    <br>
+    <br>
+    <div class="jumbotron" style="padding-top:1%;padding-bottom:2%">
+        <h2 class="display-5">{{post.title}}</h2>
+        <hr class="my-1">
+        <p style="white-space:pre-wrap">{{post.content}}</p>
+        <br>
+        <a class="btn btn-danger" href="/posts/delete/{{ post.id }}">Delete</a>
+        <a class="btn btn-primary" href="/posts/edit/{{ post.id }}">Edit</a>
+    </div>
+
+    <hr>
+{% endfor %}
+
+{% endblock %}

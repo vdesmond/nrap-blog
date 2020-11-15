@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<title>Kumki</title>
+{% endblock %}
+
+{% block body %} 
+<h1>Post pannum edam idhu</h1>
+
+    <hr>
+    <h2>Create new ssn-confession:</h2>
+    <form action = '/posts' method = 'POST'>
+        <label for="title">Title</label> 
+        <input class="form-control" type="text" name='title' id='title' placeholder="Enter Title" aria-label="Enter Title">
+        <br>
+        <label for="author">Author</label> 
+        <input class="form-control" type="text" name='author' id='author' placeholder="Enter Author" aria-label="Enter Author">
+        <br>
+        <div class="form-group">
+            <label for="content">Post</label>
+            <textarea class="form-control" name='content' id='content' placeholder="Type your confessions here" aria-label="Type your confessions here" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success" value="post">Submit</button>
+    </form>
+    <hr>
+
+{% endblock %}
