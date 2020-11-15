@@ -27,8 +27,8 @@ def posts():
         post_title = request.form['title']
         post_content = request.form['content']
         post_author = request.form['author']
-        post_date_posted = default = datetime.strptime(datetime.now().strftime("%Y-%m-%d %I:%M:%S"), "%Y-%m-%d %I:%M:%S")
-        new_post = BlogPost(title= post_title, content=post_content, author=post_author, date_posted = post.date_posted)
+        post_date_posted = datetime.strptime(datetime.now().strftime("%Y-%m-%d %I:%M:%S"), "%Y-%m-%d %I:%M:%S")
+        new_post = BlogPost(title= post_title, content=post_content, author=post_author, date_posted = post_date_posted)
         db.session.add(new_post)
         db.session.commit()
         return redirect('/posts')
@@ -50,7 +50,7 @@ def edit(id):
         post.title = request.form['title']
         post.content = request.form['content']
         post.author = request.form['author']
-        post.date_posted = default = datetime.strptime(datetime.now().strftime("%Y-%m-%d %I:%M:%S"), "%Y-%m-%d %I:%M:%S")
+        post.date_posted = datetime.strptime(datetime.now().strftime("%Y-%m-%d %I:%M:%S"), "%Y-%m-%d %I:%M:%S")
         db.session.commit()
         return redirect('/posts')
     else:
